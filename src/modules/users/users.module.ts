@@ -10,8 +10,8 @@ import UsersController from './infra/http/controllers/users.controller';
         name: 'USERS_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
-          port: 3334,
+          host: process.env.TOP_USERS_HOST ?? 'localhost',
+          port: parseInt(process.env.TOP_USERS_PORT ?? '3334'),
         },
       },
     ]),

@@ -10,8 +10,8 @@ import FinancesController from './infra/http/controllers/finances.controller';
         name: 'FINANCES_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
-          port: 3335,
+          host: process.env.TOP_FINANCE_HOST ?? 'localhost',
+          port: parseInt(process.env.TOP_FINANCE_PORT ?? '3335'),
         },
       },
     ]),
