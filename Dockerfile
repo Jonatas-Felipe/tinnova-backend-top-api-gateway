@@ -11,4 +11,4 @@ RUN yarn build
 
 EXPOSE 3333
 
-CMD ["node", "dist/src/main.js"]
+CMD ["node", "dist/main.js"]
