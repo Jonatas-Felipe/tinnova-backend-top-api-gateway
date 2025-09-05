@@ -9,6 +9,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 
@@ -22,10 +23,10 @@ class FinancesController {
   constructor(@Inject('FINANCES_SERVICE') private client: ClientProxy) {}
 
   @Get()
-  async index() {
+  async index(@Query() page: number | undefined) {
     try {
       const response = await lastValueFrom<IResponseFinanceDTO[]>(
-        this.client.send({ cmd: 'finances_find_all' }, {}),
+        this.client.send({ cmd: 'finances_find_all' }, { page }),
       );
 
       return response;

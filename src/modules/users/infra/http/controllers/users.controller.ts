@@ -24,13 +24,17 @@ class UsersController {
   constructor(@Inject('USERS_SERVICE') private client: ClientProxy) {}
 
   @Get()
-  async index(@Query('page') page: number | undefined) {
+  async index(
+    @Query('page') page: number | undefined,
+    @Query('onlyActives') onlyActives: boolean | undefined,
+  ) {
     try {
       const response = await lastValueFrom<IResponseUserDTO[]>(
         this.client.send(
           { cmd: 'users_find_all' },
           {
             page,
+            onlyActives,
           },
         ),
       );
