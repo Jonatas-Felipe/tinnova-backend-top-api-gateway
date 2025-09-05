@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { IsString, IsNumber } from 'class-validator';
 
 export default class ICreateFinanceDTO {
